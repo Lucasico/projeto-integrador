@@ -3,28 +3,43 @@
 const { sequelize } = require("../../models/User");
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    const UsersTable = queryInterface.createTable('users', {
+  up: async (queryInterface, Sequelize) => {
+   const ClientsTable = queryInterface.createTable('clients', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      admin: {
+      name: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
       },
       email: {
         allowNull: false,
-        unique: true,
         type: Sequelize.STRING,
       },
-      name:{
+      phone: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      password: {
+      street: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      district: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      number: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      uf: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -38,10 +53,8 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: new Date(),
       },
-    });
-
-    return UsersTable;
+   })
   },
 
-  down: queryInterface => queryInterface.dropTable('Users'),
+  down: queryInterface => queryInterface.dropTable('clients'),
 };

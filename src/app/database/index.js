@@ -1,25 +1,26 @@
-const Sequelize = require('sequelize');
-const User = require('../models/User');
-const Client = require('../models/Clients');
-const Service = require('../models/Service');
-const Printer = require('../models/Printers')
-const databaseConfig = require('../../config/database');
+const Sequelize = require("sequelize");
+const User = require("../models/User");
+const Client = require("../models/Clients");
+const Service = require("../models/Service");
+const Printer = require("../models/Printers");
+const Order = require("../models/Orders");
+const databaseConfig = require("../../config/database");
 
-const models = [User, Client, Service, Printer];
+const models = [User, Client, Service, Printer, Order];
 
 class Database {
   constructor() {
     this.init();
   }
 
-  init(){
-
+  init() {
     this.connection = new Sequelize(databaseConfig);
 
     models
-      .map(model => model.init(this.connection))
-      .map(model => model.associate && model.associate(this.connection.models))
-
+      .map((model) => model.init(this.connection))
+      .map(
+        (model) => model.associate && model.associate(this.connection.models)
+      );
   }
 }
 

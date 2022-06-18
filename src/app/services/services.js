@@ -1,38 +1,37 @@
-
-const Service = require('../models/Service')
+const Service = require("../models/Service");
 
 module.exports = {
-    async create(data){
-        Service.create(data)
-    },
+  async create(data) {
+    Service.create(data);
+  },
 
-    async delete(id) {
-        const deleted = await Service.destroy({
-            where: { id: id }
-        })
+  async delete(id) {
+    const deleted = await Service.destroy({
+      where: { id: id },
+    });
 
-        return deleted
-    },
+    return deleted;
+  },
 
-    async findOne(id) {
-        const service = await Service.findOne({
-            where: {id: id}
-        })
+  async findOne(id) {
+    const service = await Service.findOne({
+      where: { id: id },
+    });
 
-        return service
-    },
+    return service;
+  },
 
-    async update(id, data) {
-        const [ updated ] = await Service.update(data, {
-            where: { id: id }
-        });
-        
-        return updated
-    },
+  async update(id, data) {
+    const [updated] = await Service.update(data, {
+      where: { id: id },
+    });
 
-    async list() {
-        const services = await Service.findAll()
+    return updated;
+  },
 
-        return services
-    }
-}
+  async list() {
+    const services = await Service.findAll();
+
+    return services;
+  },
+};
